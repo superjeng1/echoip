@@ -57,11 +57,11 @@ func New(db geo.Reader, cache *Cache) *Server {
 }
 
 func ipFromForwardedForHeader(v string) string {
-	sep := strings.Index(v, ",")
+	sep := strings.LastIndex(v, ",")
 	if sep == -1 {
 		return v
 	}
-	return v[:sep]
+	return v[sep+1:]
 }
 
 func ipFromRequest(headers []string, r *http.Request) (net.IP, error) {
