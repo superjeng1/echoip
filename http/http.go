@@ -72,7 +72,7 @@ func ipFromForwardedForHeader(v string) string {
 	if sep == -1 {
 		return v
 	}
-	return v[sep+1:]
+	return v[sep+1:].TrimSpace()
 }
 
 // ipFromRequest detects the IP address for this transaction.
